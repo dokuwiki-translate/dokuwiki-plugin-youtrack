@@ -56,7 +56,7 @@ class syntax_plugin_youtrack_list extends DokuWiki_Syntax_Plugin {
         list($tmp, $match) = explode('>', substr($match, 0, -2), 2); // strip markup
         list($filter, $cols) = explode('|', $match, 2); // split filter and columns from rest of match
         if (empty($filter) || empty($cols)) return false;
-        $cols = array_map('trim', explode(',', $cols));
+        $cols = array_map('hsc', array_map('trim', explode(',', $cols)));
 
         $yt = $this->loadHelper('youtrack');
 
