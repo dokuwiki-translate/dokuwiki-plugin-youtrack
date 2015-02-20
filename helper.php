@@ -90,8 +90,8 @@ class helper_plugin_youtrack extends DokuWiki_Plugin {
      * @return SimpleXMLElement Response
      */
     function request($method, $endpoint, $params = false) {
-        if (!function_exists('curl_init')) {
-            msg('You have to install curl first to use the YouTrack plugin', -1);
+        if (!extension_loaded('curl')) {
+            msg('You need to have curl installed and enabled to use the YouTrack plugin', -1);
             return false;
         }
 
@@ -255,7 +255,9 @@ class helper_plugin_youtrack extends DokuWiki_Plugin {
                     }
                 $R->tablerow_close();
             $R->tablethead_close();
-            $R->tabletbody_open();
+            if (method_exists($R, 'tabletbody_open')) {
+                $R->tabletbody_open();
+            }
 
                 foreach ($issues as $issue) {
                     $R->tablerow_open();
@@ -271,7 +273,9 @@ class helper_plugin_youtrack extends DokuWiki_Plugin {
                     $R->tablerow_close();
                 }
 
-            $R->tabletbody_close();
+            if (method_exists($R, 'tabletbody_close')) {
+                $R->tabletbody_close();
+            }
         $R->table_close();
     }
 
