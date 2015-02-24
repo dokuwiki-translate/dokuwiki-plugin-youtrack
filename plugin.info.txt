@@ -1,7 +1,7 @@
 base   youtrack
-author Anika Henke
+author Zopa
 email  dev@zopa.com
-date   2015-02-20
+date   2015-02-24
 name   YouTrack plugin
 desc   List YouTrack issues filtered by YouTrack Query Language
 url    https://www.dokuwiki.org/plugin:youtrack

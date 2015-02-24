@@ -114,7 +114,7 @@ class helper_plugin_youtrack extends DokuWiki_Plugin {
                 break;
             default:
                 if ($params) {
-                    $url = sprintf("%s?%s", $url, http_build_query($params));
+                    $url = sprintf("%s?%s", $url, http_build_query($params, '', '&'));
                 }
         }
 
